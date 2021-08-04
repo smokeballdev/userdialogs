@@ -42,7 +42,7 @@ build:
   project: src/Acr.UserDialogs.sln
   verbosity: minimal
 after_build:
-- cmd: dotnet pack src/Acr.UserDialogs/Acr.UserDialogs.csproj -output "./" -version "%APPVEYOR_BUILD_VERSION%"
+- cmd: dotnet pack src/Acr.UserDialogs/Acr.UserDialogs.csproj --output "./" --version-suffix "%APPVEYOR_BUILD_VERSION%"
 artifacts:
 - path: '*.nupkg'
 
