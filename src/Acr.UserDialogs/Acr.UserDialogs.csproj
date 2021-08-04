@@ -2,11 +2,10 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;monoandroid10.0;xamarin.mac20;xamarin.tvos10</TargetFrameworks>
-        <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">uap10.0.16299;$(TargetFrameworks)</TargetFrameworks>
         <PackageProjectUrl>https://github.com/aritchie/userdialogs</PackageProjectUrl>
-        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+        <Product>Acr.UserDialogs (netstandard2.0) - Smokeball</Product>
         <Authors>Allan Ritchie</Authors>
-        <Description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP</Description>
+        <Description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP - This is a forked version by Smokeball to incorporate some updates.</Description>
         <PackageTags>windows ios android xamarin xam.pcl dialogs plugin</PackageTags>
         <VersionPrefix>7.1.0</VersionPrefix>
         <VersionPrefix Condition=" $(BUILD_BUILDNUMBER) != '' ">$(VersionPrefix).$(BUILD_BUILDNUMBER)</VersionPrefix>
@@ -26,6 +25,7 @@
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <PackageId>Acr.UserDialogs.Smokeball</PackageId>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -50,6 +50,7 @@
     <ItemGroup>
         <None Include="readme.txt" pack="true" PackagePath="." />
         <Compile Remove="Platforms\**\*.*" />
+        <Compile Remove="Platforms\Uwp\**" />
         <None Include="Platforms\**\*.*" />
     </ItemGroup>
 
@@ -60,7 +61,6 @@
     <ItemGroup Condition=" $(TargetFramework.StartsWith('monoandroid9')) ">
         <Compile Include="Platforms\Shared\**\*.cs" />
         <Compile Include="Platforms\Android\**\*.cs" />
-        <Reference Include="System.Drawing.Common" />
         <PackageReference Include="AndHUD" Version="1.4.2" />
         <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
     </ItemGroup>
@@ -68,7 +68,6 @@
     <ItemGroup Condition=" $(TargetFramework.StartsWith('monoandroid10')) ">
         <Compile Include="Platforms\Shared\**\*.cs" />
         <Compile Include="Platforms\Android\**\*.cs" />
-        <Reference Include="System.Drawing.Common" />
         <PackageReference Include="AndHUD" Version="1.4.2" />
         <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0" />
     </ItemGroup>
@@ -91,9 +90,6 @@
     <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
         <PackageReference Include="Coding4Fun.Toolkit.Controls" Version="2.1.8" />
         <Compile Include="Platforms\Shared\**\*.cs" />
-        <Compile Include="Platforms\Uwp\**\*.cs" />
-        <Page Include="Platforms\Uwp\**\*.xaml" SubType="Designer" Generator="MSBuild:Compile" />
-        <Compile Update="Platforms\Uwp\**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
     </ItemGroup>
 
     <ItemGroup Condition=" $(TargetFramework.StartsWith('tizen')) ">
@@ -108,5 +104,14 @@
         <Compile Include="Platforms\Shared\**\*.cs" />
         <Compile Include="Platforms\macOS\**\*.cs" />
         <Reference Include="System.Drawing.Common" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Platforms\Uwp\**" />
+      <None Remove="Platforms\Uwp\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
     </ItemGroup>
 </Project>
