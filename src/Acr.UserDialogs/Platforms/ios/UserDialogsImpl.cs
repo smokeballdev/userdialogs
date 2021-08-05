@@ -317,7 +317,6 @@ namespace Acr.UserDialogs
 
                     alert.PopoverPresentationController.SourceView = sourceView;
                     alert.PopoverPresentationController.SourceRect = rect;
-                    alert.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
 #endif
                 }
                 top.PresentViewController(alert, true, null);
