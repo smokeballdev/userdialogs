@@ -13,14 +13,14 @@ namespace Acr.UserDialogs
         public IiOSActionSheetArrowDirections ArrowDirections { get; set; }
     }
 
-
+    [Flags]
     public enum IiOSActionSheetArrowDirections
     {
-        Top,
-        Left,
-        Right,
-        Bottom,
-        Any,
-        Unknown
+        Top = 1,
+        Left = 2,
+        Right = 4,
+        Bottom = 8,
+        Any = 16,
+        Unknown = 32
     }
 }
