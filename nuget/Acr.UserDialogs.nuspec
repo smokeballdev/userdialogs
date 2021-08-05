@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+    <metadata minClientVersion="7.1.0">
+        <id>Acr.UserDialogs.Smokeball</id>
+        <title>Acr.UserDialogs (netstandard2.0) - Smokeball</title>
+        <version>$version$</version>
+        <authors>Allan Ritchie, smokeball</authors>
+        <owners>Allan Ritchie, smokeball</owners>
+        <licenseUrl>https://github.com/remy/mit-license</licenseUrl>
+        <projectUrl>https://github.com/aritchie/userdialogs</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP - This is a forked version by Smokeball to incorporate some updates.</description>
+        <summary>Cross platform plugin to show local notifications.</summary>
+        <tags>windows ios android xamarin xam.pcl dialogs plugin</tags>
+        <releaseNotes>https://github.com/aritchie/userdialogs/raw/master/ChangeLog.md</releaseNotes>
+        <dependencies>
+            <group targetFramework="MonoAndroid90">
+                <dependency id="AndHUD" version="1.4.2"/>
+                <dependency id="Xamarin.Android.Support.Design" version="28.0.0.3"/>
+                <dependency id="System.Drawing.Common" version="5.0.2"/>
+            </group>
+            <group targetFramework="MonoAndroid10">
+                <dependency id="AndHUD" version="1.4.2"/>
+                <dependency id="Xamarin.Google.Android.Material" version="1.0.0"/>
+                <dependency id="System.Drawing.Common" version="5.0.2"/>
+            </group>
+            <group targetFramework="XamariniOS10">
+                <dependency id="BTProgressHUD" version="1.3.1"/>
+            </group>
+           <group targetFramework="XamarinTVOS10">
+                <dependency id="System.Drawing.Common" version="5.0.2"/>
+            </group>
+           <group targetFramework="XamarinMac20">
+                <dependency id="System.Drawing.Common" version="5.0.2"/>
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="src\Acr.UserDialogs\bin\Release\netstandard2.0\Acr.UserDialogs.*" target="lib\netstandard2.0" />
+        <file src="src\Acr.UserDialogs\bin\Release\monoandroid10.0\Acr.UserDialogs.*" target="lib\MonoAndroid10" />
+        <file src="src\Acr.UserDialogs\bin\Release\monoandroid9.0\Acr.UserDialogs.*" target="lib\MonoAndroid90" />
+        <file src="src\Acr.UserDialogs\bin\Release\xamarin.ios10\Acr.UserDialogs.*" target="lib\XamariniOS10" />
+ 	<file src="src\Acr.UserDialogs\bin\Release\xamarin.mac20\Acr.UserDialogs.*" target="lib\XamarinMac20" />
+ 	<file src="src\Acr.UserDialogs\bin\Release\xamarin.tvos10\Acr.UserDialogs.*" target="lib\XamarinTVOS10" />
+    </files>
+</package>
