@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/aritchie/userdialogs</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP - This is a forked version by Smokeball to incorporate some updates.</description>
-        <summary>Cross platform plugin to show local notifications.</summary>
+        <summary>Cross platform plugin for alerts and prompts</summary>
         <tags>windows ios android xamarin xam.pcl dialogs plugin</tags>
         <releaseNotes>https://github.com/aritchie/userdialogs/raw/master/ChangeLog.md</releaseNotes>
         <dependencies>

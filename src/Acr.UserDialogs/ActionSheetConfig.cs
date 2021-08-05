@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Drawing;
 
 namespace Acr.UserDialogs
 {
 
-    public class ActionSheetConfig : IAndroidStyleDialogConfig
+    public class ActionSheetConfig : IAndroidStyleDialogConfig, IiOSActionSheetConfig
     {
         public static int? DefaultAndroidStyleId { get; set; }
         public static bool DefaultUseBottomSheet { get; set; }
@@ -33,7 +33,9 @@ namespace Acr.UserDialogs
         /// This icon is applied to the list items, not to destructive or cancel
         /// </summary>
         public string ItemIcon { get; set; } = DefaultItemIcon;
-
+        public Rectangle SourceRectangle { get; set; }
+        public object SourceView { get; set; }
+        public object SourceBarButtonView { get; set; }
 
         public ActionSheetConfig SetTitle(string title)
         {
