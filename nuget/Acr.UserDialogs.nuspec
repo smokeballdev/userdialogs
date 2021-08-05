@@ -21,7 +21,7 @@
             </group>
             <group targetFramework="MonoAndroid10">
                 <dependency id="AndHUD" version="1.4.2"/>
-                <dependency id="Xamarin.Google.Android.Material" version="1.0.0"/>
+                <dependency id="Xamarin.Google.Android.Material" version="1.1.0.5"/>
                 <dependency id="System.Drawing.Common" version="5.0.2"/>
             </group>
             <group targetFramework="XamariniOS10">
