@@ -230,6 +230,9 @@ namespace Acr.UserDialogs
         {
             var sheet = UIAlertController.Create(config.Title, config.Message, UIAlertControllerStyle.ActionSheet);
 
+            sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
+            sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
+
             config
                 .Options
                 .ToList()
@@ -273,11 +276,12 @@ namespace Acr.UserDialogs
                 var top = this.viewControllerFunc();
                 if (alert.PreferredStyle == UIAlertControllerStyle.ActionSheet && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
                 {
-                    var x = top.View.Bounds.Width / 2;
-                    var y = top.View.Bounds.Bottom;
+                    var sourceView = alert.PopoverPresentationController.SourceView ?? top.View;
+                    var x = sourceView.Bounds.Width / 2;
+                    var y = sourceView.Bounds.Bottom;
                     var rect = new CGRect(x, y, 0, 0);
 #if __IOS__
-                    alert.PopoverPresentationController.SourceView = top.View;
+                    alert.PopoverPresentationController.SourceView = sourceView;
                     alert.PopoverPresentationController.SourceRect = rect;
                     alert.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
 #endif
