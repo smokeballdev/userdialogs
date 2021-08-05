@@ -10,5 +10,17 @@ namespace Acr.UserDialogs
         public Rectangle SourceRectangle { get; set; }
         public object SourceView { get; set; }
         public object SourceBarButtonView { get; set; }
+        public IiOSActionSheetArrowDirections ArrowDirections { get; set; }
+    }
+
+
+    public enum IiOSActionSheetArrowDirections
+    {
+        Top,
+        Left,
+        Right,
+        Bottom,
+        Any,
+        Unknown
     }
 }
