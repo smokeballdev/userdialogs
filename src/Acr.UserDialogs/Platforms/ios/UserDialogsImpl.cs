@@ -234,6 +234,37 @@ namespace Acr.UserDialogs
             sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
             sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
 
+            if (config.ArrowDirections == IiOSActionSheetArrowDirections.Unknown)
+            {
+                sheet.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
+            }
+
+            UIPopoverArrowDirection? directions = null;
+
+            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Top) == IiOSActionSheetArrowDirections.Top)
+            {
+                directions |= UIPopoverArrowDirection.Up;
+            }
+
+            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Bottom) == IiOSActionSheetArrowDirections.Bottom)
+            {
+                directions |= UIPopoverArrowDirection.Down;
+            }
+
+            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Left) == IiOSActionSheetArrowDirections.Left)
+            {
+                directions |= UIPopoverArrowDirection.Left;
+            }
+
+            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Right) == IiOSActionSheetArrowDirections.Right)
+            {
+                directions |= UIPopoverArrowDirection.Right;
+            }
+
+            if(directions != null)
+            {
+                sheet.PopoverPresentationController.PermittedArrowDirections = directions.GetValueOrDefault(UIPopoverArrowDirection.Unknown);
+            }
 #endif
 
             config
@@ -281,7 +312,6 @@ namespace Acr.UserDialogs
                 {
 
 #if __IOS__
-
                     var sourceView = alert.PopoverPresentationController.SourceView ?? top.View;
                     var x = sourceView.Bounds.Width / 2;
                     var y = sourceView.Bounds.Bottom;
