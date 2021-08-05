@@ -76,7 +76,7 @@ namespace Acr.UserDialogs
                 Mode = UIDatePickerMode.Time,
                 PickerStyle = GetPickerStyle(config),
 #endif
-                SelectedDateTime = config.SelectedTime != null ? DateTime.Today.Add ((TimeSpan)config.SelectedTime) : DateTime.Now,
+                SelectedDateTime = config.SelectedTime != null ? DateTime.Today.Add((TimeSpan)config.SelectedTime) : DateTime.Now,
                 MinuteInterval = config.MinuteInterval,
                 OkText = config.OkText,
                 CancelText = config.CancelText,
@@ -192,7 +192,7 @@ namespace Acr.UserDialogs
 
                 if (cfg.MessageTextColor != null)
                     snackbar.MessageLabel.TextColor = cfg.MessageTextColor.Value.ToNative();
-                    //snackbar.MessageTextColor = cfg.MessageTextColor.Value.ToNative();
+                //snackbar.MessageTextColor = cfg.MessageTextColor.Value.ToNative();
 
                 //if (cfg.Position != null)
                 //    snackbar.LocationType = cfg.Position == ToastPosition.Top
@@ -228,8 +228,11 @@ namespace Acr.UserDialogs
         {
             var sheet = UIAlertController.Create(config.Title, config.Message, UIAlertControllerStyle.ActionSheet);
 
+#if __IOS__
             sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
             sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
+
+#endif
 
             config
                 .Options
@@ -274,11 +277,14 @@ namespace Acr.UserDialogs
                 var top = this.viewControllerFunc();
                 if (alert.PreferredStyle == UIAlertControllerStyle.ActionSheet && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
                 {
+
+#if __IOS__
+
                     var sourceView = alert.PopoverPresentationController.SourceView ?? top.View;
                     var x = sourceView.Bounds.Width / 2;
                     var y = sourceView.Bounds.Bottom;
                     var rect = new CGRect(x, y, 0, 0);
-#if __IOS__
+
                     alert.PopoverPresentationController.SourceView = sourceView;
                     alert.PopoverPresentationController.SourceRect = rect;
                     alert.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
