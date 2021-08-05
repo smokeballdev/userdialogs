@@ -36,7 +36,7 @@ namespace Acr.UserDialogs
         public Rectangle SourceRectangle { get; set; }
         public object SourceView { get; set; }
         public object SourceBarButtonView { get; set; }
-        public IiOSActionSheetArrowDirections ArrowDirections { get;  set; } = IiOSActionSheetArrowDirections.Unknown
+        public IiOSActionSheetArrowDirections ArrowDirections { get; set; } = IiOSActionSheetArrowDirections.Unknown;
 
         public ActionSheetConfig SetTitle(string title)
         {
