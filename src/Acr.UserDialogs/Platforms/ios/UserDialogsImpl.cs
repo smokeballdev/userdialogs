@@ -239,22 +239,22 @@ namespace Acr.UserDialogs
 
             UIPopoverArrowDirection? directions = null;
 
-            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Top) == IiOSActionSheetArrowDirections.Top)
+            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Top))
             {
                 directions |= UIPopoverArrowDirection.Up;
             }
 
-            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Bottom) == IiOSActionSheetArrowDirections.Bottom)
+            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Bottom))
             {
                 directions |= UIPopoverArrowDirection.Down;
             }
 
-            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Left) == IiOSActionSheetArrowDirections.Left)
+            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Left))
             {
                 directions |= UIPopoverArrowDirection.Left;
             }
 
-            if ((config.ArrowDirections & IiOSActionSheetArrowDirections.Right) == IiOSActionSheetArrowDirections.Right)
+            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Right))
             {
                 directions |= UIPopoverArrowDirection.Right;
             }
