@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
-    <metadata minClientVersion="7.1.0">
+    <metadata minClientVersion="2.8.1">
         <id>Acr.UserDialogs.Smokeball</id>
         <title>Acr.UserDialogs (netstandard2.0) - Smokeball</title>
         <version>$version$</version>
