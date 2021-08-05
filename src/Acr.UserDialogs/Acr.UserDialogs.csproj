@@ -27,6 +27,7 @@
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
         <PackageId>Acr.UserDialogs.Smokeball</PackageId>
         <Version>7.2.0</Version>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -70,7 +71,7 @@
         <Compile Include="Platforms\Shared\**\*.cs" />
         <Compile Include="Platforms\Android\**\*.cs" />
         <PackageReference Include="AndHUD" Version="1.4.2" />
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0" />
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.1.0.5" />
     </ItemGroup>
 
     <ItemGroup Condition=" $(TargetFramework.StartsWith('xamarin.ios')) ">
