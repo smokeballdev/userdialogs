@@ -243,22 +243,50 @@ namespace Acr.UserDialogs
 
             if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Top))
             {
-                directions |= UIPopoverArrowDirection.Up;
+                if(directions == null)
+                {
+                    directions = UIPopoverArrowDirection.Up;
+                }
+                else
+                {
+                    directions |= UIPopoverArrowDirection.Up;
+                }
             }
 
             if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Bottom))
             {
-                directions |= UIPopoverArrowDirection.Down;
+                if (directions == null)
+                {
+                    directions = UIPopoverArrowDirection.Down;
+                }
+                else
+                {
+                    directions |= UIPopoverArrowDirection.Down;
+                }
             }
 
             if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Left))
             {
-                directions |= UIPopoverArrowDirection.Left;
+                if (directions == null)
+                {
+                    directions = UIPopoverArrowDirection.Left;
+                }
+                else
+                {
+                    directions |= UIPopoverArrowDirection.Left;
+                }
             }
 
             if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Right))
             {
-                directions |= UIPopoverArrowDirection.Right;
+                if (directions == null)
+                {
+                    directions = UIPopoverArrowDirection.Right;
+                }
+                else
+                {
+                    directions |= UIPopoverArrowDirection.Right;
+                }
             }
 
             if(directions != null)
