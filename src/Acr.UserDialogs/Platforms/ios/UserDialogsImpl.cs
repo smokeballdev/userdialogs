@@ -229,67 +229,71 @@ namespace Acr.UserDialogs
             var sheet = UIAlertController.Create(config.Title, config.Message, UIAlertControllerStyle.ActionSheet);
 
 #if __IOS__
-            sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
-            sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
 
-            if (config.ArrowDirections == IiOSActionSheetArrowDirections.Unknown)
+            if (sheet.PopoverPresentationController != null && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                sheet.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
-            }
+                sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
+                sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
 
-            UIPopoverArrowDirection? directions = null;
+                if (config.ArrowDirections == IiOSActionSheetArrowDirections.Unknown)
+                {
+                    sheet.PopoverPresentationController.PermittedArrowDirections = UIPopoverArrowDirection.Unknown;
+                }
 
-            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Top))
-            {
-                if(directions == null)
-                {
-                    directions = UIPopoverArrowDirection.Up;
-                }
-                else
-                {
-                    directions |= UIPopoverArrowDirection.Up;
-                }
-            }
+                UIPopoverArrowDirection? directions = null;
 
-            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Bottom))
-            {
-                if (directions == null)
+                if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Top))
                 {
-                    directions = UIPopoverArrowDirection.Down;
+                    if (directions == null)
+                    {
+                        directions = UIPopoverArrowDirection.Up;
+                    }
+                    else
+                    {
+                        directions |= UIPopoverArrowDirection.Up;
+                    }
                 }
-                else
-                {
-                    directions |= UIPopoverArrowDirection.Down;
-                }
-            }
 
-            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Left))
-            {
-                if (directions == null)
+                if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Bottom))
                 {
-                    directions = UIPopoverArrowDirection.Left;
+                    if (directions == null)
+                    {
+                        directions = UIPopoverArrowDirection.Down;
+                    }
+                    else
+                    {
+                        directions |= UIPopoverArrowDirection.Down;
+                    }
                 }
-                else
-                {
-                    directions |= UIPopoverArrowDirection.Left;
-                }
-            }
 
-            if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Right))
-            {
-                if (directions == null)
+                if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Left))
                 {
-                    directions = UIPopoverArrowDirection.Right;
+                    if (directions == null)
+                    {
+                        directions = UIPopoverArrowDirection.Left;
+                    }
+                    else
+                    {
+                        directions |= UIPopoverArrowDirection.Left;
+                    }
                 }
-                else
-                {
-                    directions |= UIPopoverArrowDirection.Right;
-                }
-            }
 
-            if(directions != null)
-            {
-                sheet.PopoverPresentationController.PermittedArrowDirections = directions.GetValueOrDefault(UIPopoverArrowDirection.Unknown);
+                if (config.ArrowDirections.HasFlag(IiOSActionSheetArrowDirections.Right))
+                {
+                    if (directions == null)
+                    {
+                        directions = UIPopoverArrowDirection.Right;
+                    }
+                    else
+                    {
+                        directions |= UIPopoverArrowDirection.Right;
+                    }
+                }
+
+                if (directions != null)
+                {
+                    sheet.PopoverPresentationController.PermittedArrowDirections = directions.GetValueOrDefault(UIPopoverArrowDirection.Unknown);
+                }
             }
 #endif
 
