@@ -232,8 +232,15 @@ namespace Acr.UserDialogs
 
             if (sheet.PopoverPresentationController != null && UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad)
             {
-                sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
-                sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
+                if(config.SourceBarButtonView != null)
+                {
+                    sheet.PopoverPresentationController.BarButtonItem = config.SourceBarButtonView as UIBarButtonItem;
+                }
+
+                if(config.SourceView != null)
+                {
+                    sheet.PopoverPresentationController.SourceView = config.SourceView as UIView;
+                }
 
                 if (config.ArrowDirections == IiOSActionSheetArrowDirections.Unknown)
                 {
