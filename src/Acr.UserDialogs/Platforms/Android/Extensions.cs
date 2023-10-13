@@ -3,13 +3,12 @@ using Android.App;
 using Android.Graphics;
 using Acr.UserDialogs.Infrastructure;
 using Android.Content;
-
 namespace Acr.UserDialogs
 {
     public static class Extensions
     {
 
-        public static Color ToNative(this System.Drawing.Color This) => new Color(This.R, This.G, This.B, This.A);
+        public static AndroidColor ToNative(this System.Drawing.Color This) => new AndroidColor(This.R, This.G, This.B, This.A);
 
 
         //public static void RequestMainThread(Action action)

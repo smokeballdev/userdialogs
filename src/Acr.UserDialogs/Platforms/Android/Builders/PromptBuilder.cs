@@ -175,7 +175,7 @@ namespace Acr.UserDialogs.Builders
         //}
 
 
-        protected virtual Button GetButton(Dialog dialog, int buttonId)
+        protected virtual Android.Widget.Button GetButton(Dialog dialog, int buttonId)
         {
             var ac = dialog as AppCompatAlertDialog;
             if (ac != null)

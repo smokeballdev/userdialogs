@@ -136,7 +136,7 @@ namespace Acr.UserDialogs.Fragments
             };
             txt.SetTextSize(ComplexUnitType.Sp, 16);
             if (isDestructive)
-                txt.SetTextColor(Color.Red);
+                txt.SetTextColor(AndroidColor.Red);
 
             return txt;
         }

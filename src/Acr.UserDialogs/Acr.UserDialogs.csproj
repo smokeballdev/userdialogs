@@ -1,94 +1,42 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <UseMSBuild Condition="$([MSBuild]::IsOSPlatform('windows'))">true</UseMSBuild>
-        <MSBuildSdkExtrasVersion>3.0.44</MSBuildSdkExtrasVersion>
-    </PropertyGroup>
-
-    <Import Project="Sdk.props" Sdk="MSBuild.Sdk.Extras" Version="$(MSBuildSdkExtrasVersion)" Condition="'$(UseMSBuild)' == 'true'" />
-
-    <PropertyGroup>
-        <TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
-        <TargetFrameworks Condition="'$(UseMSBuild)' == 'true'">$(TargetFrameworks);netstandard2.0;xamarin.ios10;monoandroid12.0</TargetFrameworks>
-        <PackageProjectUrl>https://github.com/aritchie/userdialogs</PackageProjectUrl>
-        <Product>$(AssemblyName) ($(TargetFramework))</Product>
-        <Authors>Allan Ritchie</Authors>
-        <Description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP</Description>
-        <PackageTags>ios android xamarin xam.pcl dialogs plugin</PackageTags>
-        <PackageReleaseNotes>https://github.com/aritchie/userdialogs/raw/master/ChangeLog.md</PackageReleaseNotes>
-        <PackageIconUrl>https://github.com/aritchie/userdialogs/raw/master/icon.png</PackageIconUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <LangVersion>latest</LangVersion>
-        <NoWarn>$(NoWarn);1591;1701;1591;1702;1705;VSX1000;NU1603</NoWarn>
-        <RepositoryUrl>https://github.com/aritchie/userdialogs</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <IncludeSymbols>True</IncludeSymbols>
-        <IncludeSource>True</IncludeSource>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-        <PackageId>Acr.UserDialogs.Smokeball</PackageId>
-        <Version>7.2.0</Version>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <DebugType>full</DebugType>
-        <DebugSymbols>true</DebugSymbols>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <IncludeSource>True</IncludeSource>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-        <PublishRepositoryUrl>True</PublishRepositoryUrl>
-        <EmbedUntrackedSources>True</EmbedUntrackedSources>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true' OR '$(CI)' == 'true'">
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" $(TargetFramework.Contains('android')) ">
-        <DefineConstants>$(DefineConstants);ANDROIDX</DefineConstants>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <None Include="readme.txt" pack="true" PackagePath="." />
-        <None Include="Platforms\**\*.*" />
-        <Compile Remove="Platforms\**\*.*" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-        <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.109">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
-        <Reference Include="OpenTK-1.0" />
-        <!--<Reference Include="../OpenTK-1.0.dll" />-->
-    </ItemGroup>
-
-    <ItemGroup Condition="$(TargetFramework.Contains('mono'))">
-        <Reference Include="System.Drawing.Common" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
-        <Compile Include="Platforms\Shared\**\*.cs" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" $(TargetFramework.Contains('android')) ">
-        <Compile Include="Platforms\Shared\**\*.cs" />
-        <Compile Include="Platforms\Android\**\*.cs" />
-        <PackageReference Include="AndHUD" Version="1.5.0" />
-        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.6.0" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" $(TargetFramework.Contains('ios')) OR $(TargetFramework.Contains('catalyst')) ">
-        <Compile Include="Platforms\Shared\**\*.cs" />
-        <Compile Include="Platforms\ios\**\*.cs" />
-        <Compile Include="Platforms\Apple\**\*.cs" />
-        <PackageReference Include="BTProgressHUD" Version="1.5.0" />
-    </ItemGroup>
-
-    <Import Project="Sdk.targets" Sdk="MSBuild.Sdk.Extras" Version="$(MSBuildSdkExtrasVersion)" Condition="'$(UseMSBuild)' == 'true'" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net7.0;net7.0-ios;net7.0-android</TargetFrameworks>
+		<PackageProjectUrl>https://github.com/aritchie/userdialogs</PackageProjectUrl>
+		<Authors>Allan Ritchie</Authors>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Description>A cross platform library that allows you to call for standard user dialogs from a shared/portable library. Supports Android, iOS, and UWP</Description>
+		<PackageTags>ios android xamarin xam.pcl dialogs plugin</PackageTags>
+		<PackageReleaseNotes>https://github.com/aritchie/userdialogs/raw/master/ChangeLog.md</PackageReleaseNotes>
+		<PackageIconUrl>https://github.com/aritchie/userdialogs/raw/master/icon.png</PackageIconUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<LangVersion>latest</LangVersion>
+		<NoWarn>$(NoWarn);1591;1701;1591;1702;1705;VSX1000;NU1603</NoWarn>
+		<RepositoryUrl>https://github.com/aritchie/userdialogs</RepositoryUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageId>Acr.UserDialogs.Smokeball</PackageId>
+		<Version>8.0.1</Version>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<IncludeSource>True</IncludeSource>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>True</PublishRepositoryUrl>
+	</PropertyGroup>
+	<PropertyGroup Condition=" $(TargetFramework.Contains('android')) ">
+		<DefineConstants>$(DefineConstants);ANDROIDX</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup Condition=" $(TargetFramework.Contains('android')) ">
+		<PackageReference Include="AndHUD" Version="1.5.0" />
+	</ItemGroup>
+	<ItemGroup Condition=" $(TargetFramework.Contains('ios'))">
+		<PackageReference Include="BTProgressHUD" Version="1.5.0" />
+	</ItemGroup>
 </Project>

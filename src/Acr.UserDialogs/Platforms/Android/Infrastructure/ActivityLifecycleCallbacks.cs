@@ -2,7 +2,6 @@
 using Android.App;
 using Android.OS;
 
-
 namespace Acr.UserDialogs.Infrastructure
 {
     public class ActivityLifecycleCallbacks : Java.Lang.Object, Application.IActivityLifecycleCallbacks

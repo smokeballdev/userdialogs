@@ -5,7 +5,6 @@ using Android.Content;
 using Android.Views;
 using Android.Widget;
 
-
 namespace Acr.UserDialogs.Builders
 {
     public class ActionSheetListAdapter : ArrayAdapter<ActionSheetOption>
