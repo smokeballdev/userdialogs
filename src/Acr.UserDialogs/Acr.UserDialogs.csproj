@@ -17,7 +17,7 @@
 		<RepositoryUrl>https://github.com/aritchie/userdialogs</RepositoryUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<PackageId>Acr.UserDialogs.Smokeball</PackageId>
-		<Version>8.0.1</Version>
+		<Version>8.0.2</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
 		<DebugType>full</DebugType>
@@ -32,6 +32,12 @@
 	</PropertyGroup>
 	<PropertyGroup Condition=" $(TargetFramework.Contains('android')) ">
 		<DefineConstants>$(DefineConstants);ANDROIDX</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<ItemGroup Condition=" $(TargetFramework.Contains('android')) ">
 		<PackageReference Include="AndHUD" Version="1.5.0" />

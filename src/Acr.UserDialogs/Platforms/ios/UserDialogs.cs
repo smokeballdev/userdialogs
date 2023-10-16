@@ -13,17 +13,5 @@ namespace Acr.UserDialogs
         {
             Instance = new UserDialogsImpl(viewControllerFunc);
         }
-
-
-        static IUserDialogs currentInstance;
-        public static IUserDialogs Instance
-        {
-            get
-            {
-                currentInstance = currentInstance ?? new UserDialogsImpl();
-                return currentInstance;
-            }
-            set => currentInstance = value;
-        }
     }
 }
